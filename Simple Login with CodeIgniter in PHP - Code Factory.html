@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://www.codefactorycr.com/login-with-codeigniter-php.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+
+
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.codefactorycr.com/xmlrpc.php">
+<link href="./Simple Login with CodeIgniter in PHP - Code Factory_files/css" rel="stylesheet" type="text/css">
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.3.4.4 - http://yoast.com/wordpress/seo/ -->
+<title>Simple Login with CodeIgniter in PHP - Code Factory</title>
+<meta name="description" content="Simple login functionality with CodeIgniter 2.0.2 and MySQL, using CodeIgniter&#39;s validation to check form fields.">
+<link rel="canonical" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/Simple Login with CodeIgniter in PHP - Code Factory.htm">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Code Factory » Feed" href="http://www.codefactorycr.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Code Factory » Comments Feed" href="http://www.codefactorycr.com/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Code Factory » Simple Login with CodeIgniter in PHP Comments Feed" href="http://www.codefactorycr.com/login-with-codeigniter-php.html/feed">
+<link rel="stylesheet" id="responsive-style-css" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="cntctfrmStylesheet-css" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="twttrStylesheet-css" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/style(2).css" type="text/css" media="all">
+<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script type="text/javascript" async="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/ga.js"></script><script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/jquery.js"></script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/responsive-modernizr.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.codefactorycr.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.codefactorycr.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.5.1">
+<link rel="shortlink" href="http://www.codefactorycr.com/?p=206">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17715583-1']);
+  _gaq.push(['_setDomainName', 'codefactorycr.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><!-- Custom CSS Styles -->
+<style type="text/css" media="screen">
+.site-name a{
+font-family: 'Orbitron', sans-serif;
+}
+</style>
+<!-- We need this for debugging -->
+<!-- Responsive 1.8.7 -->
+<link rel="stylesheet" type="text/css" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Simple Login with CodeIgniter in PHP - Code Factory_files/shThemeDefault.css"><meta id="syntaxhighlighteranchor" name="syntaxhighlighter-version" content="3.1.3">
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft{left:10px}
+.fbpluginrecommendationsbarright{right:10px}</style></head>
+
+<body class="single single-post postid-206 single-format-standard">
+                 
+<div id="container" class="hfeed">
+         
+        <div id="header">
+    
+                
+       
+	
+                    
+        <div id="logo">
+            <span class="site-name"><a href="http://www.codefactorycr.com/" title="Code Factory" rel="home">Code Factory</a></span>
+            <span class="site-description">Web Development for You</span>
+        </div><!-- end of #logo -->  
+
+        
+        			    
+				<ul id="menu-topmenu" class="menu l_tinynav1"><li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18"><a href="http://www.codefactorycr.com/">Home</a></li>
+<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="http://www.codefactorycr.com/about">About</a></li>
+<li id="menu-item-26" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-26"><a href="http://www.codefactorycr.com/blog">Blog</a>
+<ul class="sub-menu">
+	<li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="http://www.codefactorycr.com/blog/java">Java</a></li>
+	<li id="menu-item-302" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-302"><a href="http://www.codefactorycr.com/blog/javascript">Javascript</a></li>
+	<li id="menu-item-264" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-264"><a href="http://www.codefactorycr.com/blog/php">PHP</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-205"><a href="http://www.codefactorycr.com/blog/it">IT</a></li>
+	<li id="menu-item-339" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-339"><a href="http://www.codefactorycr.com/blog/test-automation">Test Automation</a></li>
+</ul>
+</li>
+<li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a href="http://www.codefactorycr.com/contact">Contact</a></li>
+</ul><select id="tinynav1" class="tinynav tinynav1" sb="48990502" style="display: none;"><option value="/">Home</option><option value="http://www.codefactorycr.com/about">About</option><option value="http://www.codefactorycr.com/blog">Blog</option><option value="http://www.codefactorycr.com/blog/java">- Java</option><option value="http://www.codefactorycr.com/blog/javascript">- Javascript</option><option value="http://www.codefactorycr.com/blog/php">- PHP</option><option value="http://www.codefactorycr.com/blog/it">- IT</option><option value="http://www.codefactorycr.com/blog/test-automation">- Test Automation</option><option value="http://www.codefactorycr.com/contact" selected="selected">Contact</option></select><div id="sb-holder_48990502" class="sb-holder"><a id="sb-toggle_48990502" href="http://www.codefactorycr.com/login-with-codeigniter-php.html#" class="sb-toggle"></a><a id="sb-selector_48990502" href="http://www.codefactorycr.com/login-with-codeigniter-php.html#" class="sb-selector">Contact</a><ul id="sb-options_48990502" class="sb-options" style="display: none;"><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#/" rel="/">Home</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/about" rel="http://www.codefactorycr.com/about">About</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog" rel="http://www.codefactorycr.com/blog">Blog</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog/java" rel="http://www.codefactorycr.com/blog/java">- Java</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog/javascript" rel="http://www.codefactorycr.com/blog/javascript">- Javascript</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog/php" rel="http://www.codefactorycr.com/blog/php">- PHP</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog/it" rel="http://www.codefactorycr.com/blog/it">- IT</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/blog/test-automation" rel="http://www.codefactorycr.com/blog/test-automation">- Test Automation</a></li><li><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#http://www.codefactorycr.com/contact" rel="http://www.codefactorycr.com/contact" class="sb-focus">Contact</a></li></ul></div>                
+             
+    </div><!-- end of #header -->
+        
+	    <div id="wrapper" class="clearfix">
+    
+        <div id="content" class="grid col-620">
+        
+
+		        
+        				<div class="breadcrumb-list"><a href="http://www.codefactorycr.com/">Home</a> <span class="chevron">›</span> <a href="http://www.codefactorycr.com/blog" title="View all posts in Blog">Blog</a> <span class="chevron">›</span> <span class="breadcrumb-current">Simple Login with CodeIgniter in PHP</span></div>         
+          
+            <div id="post-206" class="post-206 post type-post status-publish format-standard hentry category-blog category-php">
+                <h1 class="post-title">Simple Login with CodeIgniter in PHP</h1>
+
+                <div class="post-meta">
+                <span class="meta-prep meta-prep-author posted">Posted on </span><a href="./Simple Login with CodeIgniter in PHP - Code Factory_files/Simple Login with CodeIgniter in PHP - Code Factory.htm" title="1:14 am" rel="bookmark"><span class="timestamp">April 18, 2011</span></a><span class="byline"> by </span><span class="author vcard"><a class="url fn n" href="http://www.codefactorycr.com/author/aarias" title="View all posts by Andres Arias">Andres Arias</a></span>                
+				                            <span class="comments-link">
+                        <span class="mdash">—</span>
+                    <a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comments" title="Comment on Simple Login with CodeIgniter in PHP">49 Comments ↓</a>                        </span>
+                     
+                </div><!-- end of .post-meta -->
+                                
+                <div class="post-entry">
+                    <p><a href="http://codeigniter.com/"><img class="alignleft size-full wp-image-213" title="codeigniter" alt="Code Igniter logo" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/codeigniter.png" width="48" height="48"></a><a title="Code Igniter" href="http://codeigniter.com/">CodeIgniter</a> is an open source Web Application framework built in PHP designed to make your life as a programmer easier, while allowing you good speed for development, and also good performance when the site is up and running.</p>
+<p><span id="more-206"></span>Being a Java developer for almost 10 years now, when I had to move to PHP I chose CodeIgniter for the following reasons:</p>
+<ul>
+<li>Easy to install and configure (being a newbie in PHP this was crucial)</li>
+<li>Clean and elegant <a title="Model View Controller" href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank">MVC</a> implementation</li>
+<li>Uses <a title="Active Record Patter" href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">Active Record</a> pattern for database access</li>
+<li>Overall small footprint and good performance</li>
+</ul>
+<p>Usually when you are building a program, the login/logout functionality is a must we always have to go through, so this quick tutorial will focus on this functionality, taking advantage of the benefits of using CodeIgniter instead of doing it from scratch in PHP.</p>
+<h2>Requirements</h2>
+<ul>
+<li><a title="CodeIgniter downloads" href="http://codeigniter.com/downloads/" target="_blank">CodeIgniter</a> framework.&nbsp; By the time this tutorial was done, the latest version was <strong>2.0.2</strong></li>
+<li>Any Apache/PHP/MySQL stack.&nbsp; You can install the applications independently, or install one of those packages that have all of them bundled together.</li>
+</ul>
+<h2>Installing CodeIgniter</h2>
+<p>To install CodeIgniter, you only need to uncompress the Zip file you download from the site into your <strong>htdocs</strong> directory and you’re good to go.&nbsp; We’ll configure the database access later.</p>
+<h2>Create the database</h2>
+<p>For this tutorial, you need a MySQL database with the following table:</p>
+<div id="highlighter_558838" class="syntaxhighlighter  "><div class="bar                                                                                                       "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_558838_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_558838" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="keyword">CREATE</code> <code class="keyword">TABLE</code> <code class="plain">`users` (</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">`id` tinyint(4) </code><code class="color1">NOT</code> <code class="color1">NULL</code> <code class="plain">AUTO_INCREMENT,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">`username` </code><code class="keyword">varchar</code><code class="plain">(10) </code><code class="color1">NOT</code> <code class="color1">NULL</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">`</code><code class="keyword">password</code><code class="plain">` </code><code class="keyword">varchar</code><code class="plain">(100) </code><code class="color1">NOT</code> <code class="color1">NULL</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">PRIMARY</code> <code class="keyword">KEY</code> <code class="plain">(`id`)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="plain">) ENGINE=MyISAM </code><code class="keyword">DEFAULT</code> <code class="plain">CHARSET=latin1 AUTO_INCREMENT=1 ;</code></td></tr></tbody></table></div></div></div>
+<p>Remember also to add at least one user.&nbsp; We’ll add one user called <strong>bob </strong>with password <strong>supersecret</strong>.</p>
+<div id="highlighter_426304" class="syntaxhighlighter  "><div class="bar                "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_426304_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_426304" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="keyword">insert</code> <code class="keyword">into</code> <code class="plain">users (username, </code><code class="keyword">password</code><code class="plain">) </code><code class="keyword">values</code> <code class="plain">(</code><code class="string">'bob'</code><code class="plain">, MD5(</code><code class="string">'supersecret'</code><code class="plain">));</code></td></tr></tbody></table></div></div></div>
+<h2>Configure CodeIgniter</h2>
+<h3>Database Access</h3>
+<p>Update the file <strong>application/config/database.php</strong> in your CodeIgniter installation with your database info:</p>
+<div id="highlighter_919831" class="syntaxhighlighter  "><div class="bar         "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_919831_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_919831" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>44</code></td><td class="content"><code class="variable">$db</code><code class="plain">[</code><code class="string">'default'</code><code class="plain">][</code><code class="string">'hostname'</code><code class="plain">] = </code><code class="string">'localhost'</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>45</code></td><td class="content"><code class="variable">$db</code><code class="plain">[</code><code class="string">'default'</code><code class="plain">][</code><code class="string">'username'</code><code class="plain">] = </code><code class="string">'yourdbusername'</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>46</code></td><td class="content"><code class="variable">$db</code><code class="plain">[</code><code class="string">'default'</code><code class="plain">][</code><code class="string">'password'</code><code class="plain">] = </code><code class="string">'yourdbpassword'</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>47</code></td><td class="content"><code class="variable">$db</code><code class="plain">[</code><code class="string">'default'</code><code class="plain">][</code><code class="string">'database'</code><code class="plain">] = </code><code class="string">'yourdbname'</code><code class="plain">;</code></td></tr></tbody></table></div></div></div>
+<h3>Default Controller</h3>
+<p>We need to tell CodeIgniter to land into our login page instead of the default welcome page.&nbsp; Update the file&nbsp;<strong>application/config/routes.php </strong>in your CodeIgniter installation with you controller’s name.&nbsp; We’ll call our landing controller <strong>login</strong>.</p>
+<div id="highlighter_358682" class="syntaxhighlighter  "><div class="bar                             "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_358682_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_358682" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>41</code></td><td class="content"><code class="variable">$route</code><code class="plain">[</code><code class="string">'default_controller'</code><code class="plain">] = </code><code class="string">"login"</code><code class="plain">;</code></td></tr></tbody></table></div></div></div>
+<h3>Default Libraries</h3>
+<p>In the file <strong>application/config/autoload.php </strong> you can configure the default libraries you want to load in all your controllers.&nbsp; For our case, we’ll load the database and session libraries, since we want to handle user sessions, and also the URL helper for internal link generation</p>
+<div id="highlighter_924689" class="syntaxhighlighter  "><div class="bar                               "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_924689_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_924689" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>55</code></td><td class="content"><code class="variable">$autoload</code><code class="plain">[</code><code class="string">'libraries'</code><code class="plain">] = </code><code class="keyword">array</code><code class="plain">(</code><code class="string">'database'</code><code class="plain">,</code><code class="string">'session'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div>
+<p>&nbsp;</p>
+<div id="highlighter_448121" class="syntaxhighlighter  "><div class="bar                     "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_448121_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_448121" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>67</code></td><td class="content"><code class="variable">$autoload</code><code class="plain">[</code><code class="string">'helper'</code><code class="plain">] = </code><code class="keyword">array</code><code class="plain">(</code><code class="string">'url'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div>
+<h3>Encryption Key</h3>
+<p>When you use the <strong>session</strong> library, you need to set the <strong>encryption_key</strong> in the file <strong>application/config/config.php</strong>.</p>
+<div id="highlighter_949123" class="syntaxhighlighter  "><div class="bar      "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_949123_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_949123" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>227</code></td><td class="content"><code class="variable">$config</code><code class="plain">[</code><code class="string">'encryption_key'</code><code class="plain">] = </code><code class="string">'REALLY_LONG_NUMBER'</code><code class="plain">;</code></td></tr></tbody></table></div></div></div>
+<h3>The Code</h3>
+<p>Here are the actual Views, Controllers and Model we are using for the login functionality.</p>
+<h4>User Model (application/models/user.php)</h4>
+<div id="highlighter_591238" class="syntaxhighlighter  "><div class="bar                                                                                                                                                                                                                                                            "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_591238_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_591238" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">&lt;?php</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">Class User </code><code class="keyword">extends</code> <code class="plain">CI_Model</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">login(</code><code class="variable">$username</code><code class="plain">, </code><code class="variable">$password</code><code class="plain">)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; select(</code><code class="string">'id, username, password'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; from(</code><code class="string">'users'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; where(</code><code class="string">'username'</code><code class="plain">, </code><code class="variable">$username</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; where(</code><code class="string">'password'</code><code class="plain">, MD5(</code><code class="variable">$password</code><code class="plain">));</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; limit(1);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$query</code> <code class="plain">= </code><code class="variable">$this</code> <code class="plain">-&gt; db -&gt; get();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(</code><code class="variable">$query</code> <code class="plain">-&gt; num_rows() == 1)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="variable">$query</code><code class="plain">-&gt;result();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">false;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="plain">?&gt;</code></td></tr></tbody></table></div></div></div>
+<h4>Login Controller (application/controllers/login.php)</h4>
+<div id="highlighter_794847" class="syntaxhighlighter  "><div class="bar                                                                                                                                                                                                                                                                                            "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_794847_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_794847" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">&lt;?php </code><code class="keyword">if</code> <code class="plain">( ! defined(</code><code class="string">'BASEPATH'</code><code class="plain">)) </code><code class="functions">exit</code><code class="plain">(</code><code class="string">'No direct script access allowed'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="keyword">class</code> <code class="plain">Login </code><code class="keyword">extends</code> <code class="plain">CI_Controller {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">__construct()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">parent::__construct();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">index()</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;helper(</code><code class="keyword">array</code><code class="plain">(</code><code class="string">'form'</code><code class="plain">));</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;view(</code><code class="string">'login_view'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="plain">?&gt;</code></td></tr></tbody></table></div></div></div>
+<h4>Login View (application/views/login_view.php)</h4>
+<div id="highlighter_443186" class="syntaxhighlighter  htmlscript"><div class="bar                                                                                                                                                                           "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_443186_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_443186" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="htmlscript plain">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>"&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">html</code> <code class="htmlscript color1">xmlns</code><code class="htmlscript plain">=</code><code class="htmlscript string">"<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>"</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">head</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">title</code><code class="htmlscript plain">&gt;Simple Login with CodeIgniter&lt;/</code><code class="htmlscript keyword">title</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">head</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">body</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">h1</code><code class="htmlscript plain">&gt;Simple Login with CodeIgniter&lt;/</code><code class="htmlscript keyword">h1</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript script">&lt;?</code><code class="htmlscript keyword">php</code> <code class="htmlscript functions">echo</code> <code class="htmlscript plain">validation_errors(); </code><code class="htmlscript script">?&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript script">&lt;?</code><code class="htmlscript keyword">php</code> <code class="htmlscript functions">echo</code> <code class="htmlscript plain">form_open(</code><code class="htmlscript string">'verifylogin'</code><code class="htmlscript plain">); </code><code class="htmlscript script">?&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">label</code> <code class="htmlscript color1">for</code><code class="htmlscript plain">=</code><code class="htmlscript string">"username"</code><code class="htmlscript plain">&gt;Username:&lt;/</code><code class="htmlscript keyword">label</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">input</code> <code class="htmlscript color1">type</code><code class="htmlscript plain">=</code><code class="htmlscript string">"text"</code> <code class="htmlscript color1">size</code><code class="htmlscript plain">=</code><code class="htmlscript string">"20"</code> <code class="htmlscript color1">id</code><code class="htmlscript plain">=</code><code class="htmlscript string">"username"</code> <code class="htmlscript color1">name</code><code class="htmlscript plain">=</code><code class="htmlscript string">"username"</code><code class="htmlscript plain">/&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">br</code><code class="htmlscript plain">/&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">label</code> <code class="htmlscript color1">for</code><code class="htmlscript plain">=</code><code class="htmlscript string">"password"</code><code class="htmlscript plain">&gt;Password:&lt;/</code><code class="htmlscript keyword">label</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">input</code> <code class="htmlscript color1">type</code><code class="htmlscript plain">=</code><code class="htmlscript string">"password"</code> <code class="htmlscript color1">size</code><code class="htmlscript plain">=</code><code class="htmlscript string">"20"</code> <code class="htmlscript color1">id</code><code class="htmlscript plain">=</code><code class="htmlscript string">"passowrd"</code> <code class="htmlscript color1">name</code><code class="htmlscript plain">=</code><code class="htmlscript string">"password"</code><code class="htmlscript plain">/&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">br</code><code class="htmlscript plain">/&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">input</code> <code class="htmlscript color1">type</code><code class="htmlscript plain">=</code><code class="htmlscript string">"submit"</code> <code class="htmlscript color1">value</code><code class="htmlscript plain">=</code><code class="htmlscript string">"Login"</code><code class="htmlscript plain">/&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">form</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">body</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">html</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div></div></div>
+<h4>VerifyLogin Controller (application/controllers/verifylogin.php)</h4>
+<p>This controller does the actual validation of the fields and checks the credentials against the database.</p>
+<div id="highlighter_364815" class="syntaxhighlighter  "><div class="bar                                                                                                                           show"><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_364815_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_364815" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">&lt;?php </code><code class="keyword">if</code> <code class="plain">( ! defined(</code><code class="string">'BASEPATH'</code><code class="plain">)) </code><code class="functions">exit</code><code class="plain">(</code><code class="string">'No direct script access allowed'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="keyword">class</code> <code class="plain">VerifyLogin </code><code class="keyword">extends</code> <code class="plain">CI_Controller {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">__construct()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">parent::__construct();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;model(</code><code class="string">'user'</code><code class="plain">,</code><code class="string">''</code><code class="plain">,TRUE);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">index()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="comments">//This method will have the credentials validation</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;library(</code><code class="string">'form_validation'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;form_validation-&gt;set_rules(</code><code class="string">'username'</code><code class="plain">, </code><code class="string">'Username'</code><code class="plain">, </code><code class="string">'trim|required|xss_clean'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;form_validation-&gt;set_rules(</code><code class="string">'password'</code><code class="plain">, </code><code class="string">'Password'</code><code class="plain">, </code><code class="string">'trim|required|xss_clean|callback_check_database'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;form_validation-&gt;run() == FALSE)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//Field validation failed.&nbsp; User redirected to login page</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;view(</code><code class="string">'login_view'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//Go to private area</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">redirect(</code><code class="string">'home'</code><code class="plain">, </code><code class="string">'refresh'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>30</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>31</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>32</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">check_database(</code><code class="variable">$password</code><code class="plain">)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>33</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>34</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="comments">//Field validation succeeded.&nbsp; Validate against database</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>35</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$username</code> <code class="plain">= </code><code class="variable">$this</code><code class="plain">-&gt;input-&gt;post(</code><code class="string">'username'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>36</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>37</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="comments">//query the database</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>38</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$result</code> <code class="plain">= </code><code class="variable">$this</code><code class="plain">-&gt;user-&gt;login(</code><code class="variable">$username</code><code class="plain">, </code><code class="variable">$password</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>39</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>40</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(</code><code class="variable">$result</code><code class="plain">)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>41</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>42</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$sess_array</code> <code class="plain">= </code><code class="keyword">array</code><code class="plain">();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>43</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">foreach</code><code class="plain">(</code><code class="variable">$result</code> <code class="keyword">as</code> <code class="variable">$row</code><code class="plain">)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>44</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>45</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$sess_array</code> <code class="plain">= </code><code class="keyword">array</code><code class="plain">(</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>46</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">'id'</code> <code class="plain">=&gt; </code><code class="variable">$row</code><code class="plain">-&gt;id,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>47</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">'username'</code> <code class="plain">=&gt; </code><code class="variable">$row</code><code class="plain">-&gt;username</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>48</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>49</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;session-&gt;set_userdata(</code><code class="string">'logged_in'</code><code class="plain">, </code><code class="variable">$sess_array</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>50</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>51</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">TRUE;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>52</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>53</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>54</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>55</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;form_validation-&gt;set_message(</code><code class="string">'check_database'</code><code class="plain">, </code><code class="string">'Invalid username or password'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>56</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">false;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>57</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>58</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>59</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>60</code></td><td class="content"><code class="plain">?&gt;</code></td></tr></tbody></table></div></div></div>
+<h4>Home Controller (application/controllers/home.php)</h4>
+<p>This is the private page (only authenticated users can access it).</p>
+<div id="highlighter_994239" class="syntaxhighlighter  "><div class="bar                                                                                  "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_994239_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_994239" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">&lt;?php </code><code class="keyword">if</code> <code class="plain">( ! defined(</code><code class="string">'BASEPATH'</code><code class="plain">)) </code><code class="functions">exit</code><code class="plain">(</code><code class="string">'No direct script access allowed'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">session_start(); </code><code class="comments">//we need to call PHP's session object to access it through CI</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="keyword">class</code> <code class="plain">Home </code><code class="keyword">extends</code> <code class="plain">CI_Controller {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">__construct()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">parent::__construct();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">index()</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;session-&gt;userdata(</code><code class="string">'logged_in'</code><code class="plain">))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$session_data</code> <code class="plain">= </code><code class="variable">$this</code><code class="plain">-&gt;session-&gt;userdata(</code><code class="string">'logged_in'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$data</code><code class="plain">[</code><code class="string">'username'</code><code class="plain">] = </code><code class="variable">$session_data</code><code class="plain">[</code><code class="string">'username'</code><code class="plain">];</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;load-&gt;view(</code><code class="string">'home_view'</code><code class="plain">, </code><code class="variable">$data</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//If no session, redirect to login page</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">redirect(</code><code class="string">'login'</code><code class="plain">, </code><code class="string">'refresh'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="keyword">function</code> <code class="plain">logout()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="variable">$this</code><code class="plain">-&gt;session-&gt;unset_userdata(</code><code class="string">'logged_in'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">session_destroy();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain">redirect(</code><code class="string">'home'</code><code class="plain">, </code><code class="string">'refresh'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>30</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>31</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>32</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>33</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>34</code></td><td class="content"><code class="plain">?&gt;</code></td></tr></tbody></table></div></div></div>
+<h4>Home Page View (application/views/home_view.php)</h4>
+<div id="highlighter_747211" class="syntaxhighlighter  htmlscript"><div class="bar                                               "><div class="toolbar"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_747211_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_747211" menu="false" src="http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf"></div><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="htmlscript plain">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>"&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">html</code> <code class="htmlscript color1">xmlns</code><code class="htmlscript plain">=</code><code class="htmlscript string">"<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>"</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">head</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">title</code><code class="htmlscript plain">&gt;Simple Login with CodeIgniter - Private Area&lt;/</code><code class="htmlscript keyword">title</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">head</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">body</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">h1</code><code class="htmlscript plain">&gt;Home&lt;/</code><code class="htmlscript keyword">h1</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">h2</code><code class="htmlscript plain">&gt;Welcome </code><code class="htmlscript script">&lt;?</code><code class="htmlscript keyword">php</code> <code class="htmlscript functions">echo</code> <code class="htmlscript variable">$username</code><code class="htmlscript plain">; </code><code class="htmlscript script">?&gt;</code><code class="htmlscript plain">!&lt;/</code><code class="htmlscript keyword">h2</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">&lt;</code><code class="htmlscript keyword">a</code> <code class="htmlscript color1">href</code><code class="htmlscript plain">=</code><code class="htmlscript string">"home/logout"</code><code class="htmlscript plain">&gt;Logout&lt;/</code><code class="htmlscript keyword">a</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;</code><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">body</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="htmlscript plain">&lt;/</code><code class="htmlscript keyword">html</code><code class="htmlscript plain">&gt;</code></td></tr></tbody></table></div></div></div>
+<p>The code is pretty easy to follow and understand.&nbsp; Also, <a title="Download code here" href="http://files.codefactorycr.com/blog/codeigniter_login.tar.gz">you can download the code from here</a>, so you can install it and test it in your location.&nbsp; You’ll only need a full installation of CodeIgniter 2.0.2 and the table in your MySQL database.&nbsp; If you need any help, feel free to leave us a comment or shoot us an email.</p>
+<p>Also, this code uses a pretty basic form validation from CodeIgniter.&nbsp; If you need a more complex validation process, check <a title="CodeIgniter Form Validation" href="http://codeigniter.com/user_guide/libraries/form_validation.html" target="_blank">CodeIgniter’s Form Validation</a> docs at their site.</p>
+<p>Cheers!</p>
+<div class="twttr_button">
+				<a href="http://twitter.com/share?url=http://www.codefactorycr.com/login-with-codeigniter-php.html&text=Simple%20Login%20with%20CodeIgniter%20in%20PHP" target="_blank" title="Click here if you liked this article.">
+					<img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/twitt.gif" alt="Twitt">
+				</a>
+			</div><div id="wp_fb_like_button" style="margin:5px 0;float:none;height:100px;"><script src="./Simple Login with CodeIgniter in PHP - Code Factory_files/all.js"></script><fb:like href="http%3A%2F%2Fwww.codefactorycr.com%2Flogin-with-codeigniter-php.html" send="false" layout="standard" width="350" show_faces="true" font="arial" action="like" colorscheme="light" fb-xfbml-state="rendered" class=" fb_edge_widget_with_comment fb_iframe_widget"><span style="height: 80px; width: 350px;"><iframe id="f2fd42d144" name="f2df852ff8" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/like.htm" style="border: none; overflow: hidden; height: 80px; width: 350px;"></iframe></span></fb:like></div>                    
+                                        
+                                    </div><!-- end of .post-entry -->
+                
+                <div class="navigation">
+			        <div class="previous">‹ <a href="http://www.codefactorycr.com/glassfish-behind-apache.html" rel="prev">Setting up Glassfish behind Apache</a></div>
+                    <div class="next"><a href="http://www.codefactorycr.com/custom-rules-jquery-validation.html" rel="next">Custom Rules for JQuery Validation in Forms</a> ›</div>
+		        </div><!-- end of .navigation -->
+                
+                <div class="post-data">
+				     
+					Posted in <a href="http://www.codefactorycr.com/blog" title="View all posts in Blog">Blog</a>, <a href="http://www.codefactorycr.com/blog/php" title="View all posts in PHP">PHP</a> 
+                </div><!-- end of .post-data -->             
+
+            <div class="post-edit"></div>             
+            </div><!-- end of #post-206 -->
+            
+			
+    <h6 id="comments">
+			49 comments on “<span>Simple Login with CodeIgniter in PHP</span>”    </h6>
+
+    
+    <ol class="commentlist">
+        		<li class="comment even thread-even depth-1" id="comment-3565">
+				<div id="div-comment-3565" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/6ec713a18622fe2057b3d94f370982d3" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">govarthanan</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-3565">
+			January 11, 2013 at 7:52 am</a>		</div>
+
+		<p>it’s good one…</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3849">
+				<div id="div-comment-3849" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/81d0859e2fca12c20348aba05ef19141" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://joeparente.com/" rel="external nofollow" class="url">Joe P.</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-3849">
+			January 13, 2013 at 11:16 pm</a>		</div>
+
+		<p>Nice and concise. Thanks</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-3858">
+				<div id="div-comment-3858" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/72a5431c04b43c52c426b8e3b083647e" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://www.technologykenya.com/" rel="external nofollow" class="url">alex mbiru</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-3858">
+			January 14, 2013 at 2:08 am</a>		</div>
+
+		<p>this script help me a lot, keep the good work.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4010">
+				<div id="div-comment-4010" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/cea5c2577d0d7c6a41975fa77baff20a" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://flashbag.if.ua/" rel="external nofollow" class="url">flashbag</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4010">
+			January 15, 2013 at 7:30 am</a>		</div>
+
+		<p>I was just searching for simple login example. And I’ve founded it!<br>
+Thank you!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-4077">
+				<div id="div-comment-4077" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/44f56ff235ad78548e44434047ea6519" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Eb</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4077">
+			January 15, 2013 at 8:45 pm</a>		</div>
+
+		<p>thanks for the great tutorial. I’m just getting started with code igniter. Just an observation, User Model (application/models/user/php) is supposed to be User Model (application/models/user.php). Wrong?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-4083">
+				<div id="div-comment-4083" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4083">
+			January 15, 2013 at 9:48 pm</a>		</div>
+
+		<p>Fixed!  Thanks for the heads up! <img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-4172">
+				<div id="div-comment-4172" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/2dbe8f32db201a357e3161807cb929b8" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://tinyurl.com/0577horn32250" rel="external nofollow" class="url">http://tinyurl.com/0577horn32250</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4172">
+			January 16, 2013 at 12:01 pm</a>		</div>
+
+		<p>“Simple Login with CodeIgniter in PHP – Code Factory” was in fact a great posting.</p>
+<p>In case it possessed much more pics this would be even<br>
+much better. Regards ,Gilda</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4390">
+				<div id="div-comment-4390" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/1f7e6b221d99bd24415ee39683a2ddec" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Preetham</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4390">
+			January 18, 2013 at 1:27 am</a>		</div>
+
+		<p>thanks a lot for posting this….</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-4702">
+				<div id="div-comment-4702" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/aef5365bd8ef997746a0af1b0d732281" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Tony</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4702">
+			January 20, 2013 at 6:24 am</a>		</div>
+
+		<p>Thanks for this! It helped me a great deal.<br>
+It was posted back in 2011 from the looks of it, but still works line for line with the current version in 2013.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4939">
+				<div id="div-comment-4939" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/74988c68fa0fff927980ded9fbef36fd" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Shahzeb Babar</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4939">
+			January 22, 2013 at 2:47 am</a>		</div>
+
+		<p>It is open for SQL injection. tried it myself.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-4944">
+				<div id="div-comment-4944" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/2bacf421a0c510352e71e7aefabd5bed" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://no/" rel="external nofollow" class="url">kap</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4944">
+			January 22, 2013 at 4:24 am</a>		</div>
+
+		<p>This is fantastic work…..</p>
+<p>and also thanks……</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4945">
+				<div id="div-comment-4945" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/2bacf421a0c510352e71e7aefabd5bed" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://no/" rel="external nofollow" class="url">kap</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4945">
+			January 22, 2013 at 4:25 am</a>		</div>
+
+		<p>(dap)</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-4947">
+				<div id="div-comment-4947" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/6be707cb04e223af2fc0d29edaa80b51" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">SHWETA</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-4947">
+			January 22, 2013 at 5:07 am</a>		</div>
+
+		<p>i have tried with your code and created database and tables but not getting how to run this,please help me</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5275">
+				<div id="div-comment-5275" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/9369375f666ba9ba35985d1a76fdced8" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Taukil Ali</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5275">
+			January 24, 2013 at 5:46 am</a>		</div>
+
+		<p>Great post .I like it.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-5298">
+				<div id="div-comment-5298" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5298">
+			January 24, 2013 at 8:51 am</a>		</div>
+
+		<p>Hey!  Can you post the error you are getting? Or send me an email (aarias_at_codefactorycr.com)</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5305">
+				<div id="div-comment-5305" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/3d917345714a202eb5611090bc25690c" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">julian</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5305">
+			January 24, 2013 at 9:37 am</a>		</div>
+
+		<p>you already put the url helper in the autoload.php so why did you still load it in the login controller?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-5307">
+				<div id="div-comment-5307" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5307">
+			January 24, 2013 at 9:54 am</a>		</div>
+
+		<p>Good catch!  It is not required in the controller as you say.  I’ll fix the post.</p>
+<p>Thanks!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5673">
+				<div id="div-comment-5673" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/f19d962a729af89147dc4c43f3c762d0" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Austin</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5673">
+			January 27, 2013 at 5:53 am</a>		</div>
+
+		<p>I’m getting a 404 on verifylogin, yet I followed your guide to the teeth. Could it be an htaccess problem?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-5739">
+				<div id="div-comment-5739" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5739">
+			January 27, 2013 at 4:28 pm</a>		</div>
+
+		<p>Good catch!  I updated the code in user.php to use a more proper version of $this-&gt;db-&gt;where(), instead of concatenating strings.  More info here: <a href="http://ellislab.com/codeigniter/user-guide/database/active_record.html" rel="nofollow">http://ellislab.com/codeigniter/user-guide/database/active_record.html</a></p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-5740">
+				<div id="div-comment-5740" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5740">
+			January 27, 2013 at 4:29 pm</a>		</div>
+
+		<p>Hey Austin!  Well, it could be an .htaccess problem, since by using form_open(‘verifylogin’); in the<br>
+</p><form> tag, you’re using CodeIgniter’s helper to create an absolute path for the form action, instead of building the url yourself.  Have you tried this without the .htaccess to see how it goes?</form>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-5949">
+				<div id="div-comment-5949" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/ebcdfa4a8909744dcfe78d31ed5e284a" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">andres</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5949">
+			January 28, 2013 at 9:44 pm</a>		</div>
+
+		<p>hi, sorry for my english.<br>
+how do I validate that a user is logged in, if I have multiple controllers.<br>
+because when I click it back in my browser, and I logged out, I can see my application. I’m trying to apply your example to my application but I could not get it right. Thank you.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-5958">
+				<div id="div-comment-5958" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5958">
+			January 28, 2013 at 10:53 pm</a>		</div>
+
+		<p>In verifylogin.php (line 49) you add the user info to a key called “logged_in” in the session, so in the private pages you need to check that this “logged_in” key exists in the session, like this:</p>
+<p>if(!$this-&gt;session-&gt;userdata(‘logged_in’)){<br>
+  //Not logged in, redirect to a public page<br>
+  redirect(‘home’, ‘refresh’);<br>
+}</p>
+<p>And to log out you can do this: $this-&gt;session-&gt;unset_userdata(‘logged_in’);</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-5961">
+				<div id="div-comment-5961" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/ebcdfa4a8909744dcfe78d31ed5e284a" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">andres</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5961">
+			January 28, 2013 at 11:11 pm</a>		</div>
+
+		<p>if it is exactly what I’m doing pass your example to my application, but I have more drivers also I have to validate these and did what you commented:<br>
+if (!$this-&gt;session-&gt;userdata(‘logged_in’)) {<br>
+            redirect(‘home’, ‘refresh’);<br>
+}</p>
+<p>I log off, I get redirected to the login form, but when clicking back on my browser allows me to see all my application. : (</p>
+<p>Curiously works fine in Internet Explorer but not in Firefox, Chrome and Opera.<br>
+Do you speak Spanish?.<br>
+Greetings from Cali, Colombia.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5963">
+				<div id="div-comment-5963" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/15346bb1733e38683ef9af499b50636d" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">zul</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5963">
+			January 28, 2013 at 11:28 pm</a>		</div>
+
+		<p>Why i get this Error :</p>
+<p>An Error Was Encountered</p>
+<p>In order to use the Session class you are required to set an encryption key in your config file.</p>
+<p>I already follow your instruction. anybody can help me?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-5974">
+				<div id="div-comment-5974" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/f034635f78672f57d5af89541691f5ca" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Jeff</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5974">
+			January 29, 2013 at 1:12 am</a>		</div>
+
+		<p>Hi! I get this after following your tutorial:</p>
+<p>“An Error Was Encountered</p>
+<p>Unable to load the requested class: database, session”</p>
+<p>Can anyone help me? I was wondering what happened?</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-5978">
+				<div id="div-comment-5978" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/c146cce42156e256649af75c626f4414" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://www.shubhbandh.com/" rel="external nofollow" class="url">Manoj Damkondwar</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-5978">
+			January 29, 2013 at 1:55 am</a>		</div>
+
+		<p>Thanks man now I am starting with codeiniter it’s very useful for me..</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7076">
+				<div id="div-comment-7076" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/df82a1b400c740cb13d1bf235f2c7daf" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Prashanth.Maddur</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7076">
+			February 6, 2013 at 3:35 am</a>		</div>
+
+		<p>its good for beginners……….</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7108">
+				<div id="div-comment-7108" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/d2251a150d3d6473347a40cc387c6b13" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Morris</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7108">
+			February 7, 2013 at 1:41 pm</a>		</div>
+
+		<p>Thanks!!! this really help me a lot <img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7112">
+				<div id="div-comment-7112" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/357a20e8c56e69d6f9734d23ef9517e8" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Christiaan Janssen</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7112">
+			February 8, 2013 at 1:24 am</a>		</div>
+
+		<p>Awesome tutorial. Works like a charm!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7159">
+				<div id="div-comment-7159" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/a542234f7d67a510a93a6333dc2b491f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">peter</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7159">
+			February 10, 2013 at 3:04 pm</a>		</div>
+
+		<p>Thank you very much, very useful. I’ve got only one problem. I think it uses only 1 session for multiple users !?<br>
+If i log in as for example bob and in a new tab mike, then when i have a shopping cart in the “member area” and want to shop, then i add something and go to the other tab where mike is logged in and put something into the shopping cart, the tab where mike is logged in changes to bob. </p>
+<p>thanks in advance</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-7164">
+				<div id="div-comment-7164" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7164">
+			February 10, 2013 at 9:23 pm</a>		</div>
+
+		<p>Hi Peter</p>
+<p>I think the problem you’re having is in your browser.  The same happens to me in Firefox and Chrome, since the session is shared among tabs (e.g. you’re in amazon and open multiple tabs and add them to your cart, keeping the logged in session).  You can try this with a different browser (two different browsers in the same machine) or maybe with Chrome in incognito mode, since it’s a separate window and process from the non-incognito window.</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7166">
+				<div id="div-comment-7166" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/b61bde5750ee8f4443a65e704db9c40e" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://wwww.softcl@ans.co.ke/" rel="external nofollow" class="url">Sebastian</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7166">
+			February 11, 2013 at 6:43 am</a>		</div>
+
+		<p>After doing exactly as requested in the whole login tutorial, what url should I run in my localhost given my local root is localhost/simple_login?<br>
+pliz help…</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7167">
+				<div id="div-comment-7167" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/9d0ceb7fb828688c4776cea5d9824f43" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Vladimir</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7167">
+			February 11, 2013 at 7:14 am</a>		</div>
+
+		<p>I don’t understand one row.<br>
+This is in function check_database($password)</p>
+<p>   $username = $this-&gt;input-&gt;post(‘username’);</p>
+<p>Why you don’t put too variable $password?<br>
+fe. $password = $this-&gt;input-&gt;post(‘username’);</p>
+<p>Thanks.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7168">
+				<div id="div-comment-7168" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/9d0ceb7fb828688c4776cea5d9824f43" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Vladimir</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7168">
+			February 11, 2013 at 7:16 am</a>		</div>
+
+		<p>I made mistake. Sorry.</p>
+<p>I don’t understand one row.<br>
+This is in function check_database($password)</p>
+<p>$username = $this-&gt;input-&gt;post(‘username’);</p>
+<p>Why you don’t put too variable $password?<br>
+fe. $password = $this-&gt;input-&gt;post(‘password’);</p>
+<p>Thanks.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7185">
+				<div id="div-comment-7185" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/9697fb5282bf94b7b07771b7bc7cb232" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">jithu.majinu</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7185">
+			February 12, 2013 at 4:59 am</a>		</div>
+
+		<p>realy it is good tutorial for beginners </p>
+<p>thank you <img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7200">
+				<div id="div-comment-7200" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/3a4be089cc0926931c9d479ce6e6316a" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">pantas</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7200">
+			February 12, 2013 at 8:20 pm</a>		</div>
+
+		<p>help me an error…</p>
+<p>i try it on appserv 2.5.9, but i get this error..</p>
+<p>Internal Server Error</p>
+<p>The server encountered an internal error or misconfiguration and was unable to complete your request.</p>
+<p>Please contact the server administrator, <a href="mailto:psinaga24@gmail.com">psinaga24@gmail.com</a> and inform them of the time the error occurred, and anything you might have done that may have caused the error.</p>
+<p>More information about this error may be available in the server error log.<br>
+Apache/2.2.4 (Win32) PHP/5.2.3 Server at localhost Port 80</p>
+<p>please help me..</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7207">
+				<div id="div-comment-7207" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/7fab9817dd98ae9f371728302736c37c" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">angel</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7207">
+			February 13, 2013 at 7:12 am</a>		</div>
+
+		<p>thanks!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-7208">
+				<div id="div-comment-7208" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7208">
+			February 13, 2013 at 7:21 am</a>		</div>
+
+		<p>Hi pantas</p>
+<p>Is there a way you could check Apache’s logfiles?  It seems something went really wrong and threw out that 500 error.  You can check for the error_log or php_error_log (depending on the lamp server you’re using).</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-7209">
+				<div id="div-comment-7209" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7209">
+			February 13, 2013 at 7:23 am</a>		</div>
+
+		<p>Hi Sebastian</p>
+<p>The url should be something like <a href="http://localhost/simple_login/index.php/login" rel="nofollow">http://localhost/simple_login/index.php/login</a> (or remove index.php if you have changed the config for this)</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-7210">
+				<div id="div-comment-7210" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7210">
+			February 13, 2013 at 7:24 am</a>		</div>
+
+		<p>Hi Vladimir</p>
+<p>As far as I understand, the form_validation methods accept only one field <img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/icon_sad.gif" alt=":(" class="wp-smiley">  since they’re validating a field in a form.  The $this-&gt;input-&gt;post(‘username’) is a trick to have both params when checking the database.</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7220">
+				<div id="div-comment-7220" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/aa911a517f7751ca0e3c88f20d0caf36" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Gopika</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7220">
+			February 13, 2013 at 11:13 pm</a>		</div>
+
+		<p>Hi Andres</p>
+<p>Thank you for the tutorial. As a beginner with codeigniter, it was very helpful. </p>
+<p>I wanted to create this in both chinese and english.</p>
+<p><a href="https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n" rel="nofollow">https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n</a></p>
+<p>I had followed this steps and was able to create the language change. But then the login is not working, it is showing Call to a member function select() on a non-object.</p>
+<p>Any help will be appreciated. </p>
+<p>Thanks a lot.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7225">
+				<div id="div-comment-7225" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/232f1eca7e580c9dcb002f16dc8debc7" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://www.barisgunduz.com/" rel="external nofollow" class="url">Barış</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7225">
+			February 14, 2013 at 7:03 am</a>		</div>
+
+		<p>That was really useful. I am learning the codeigniter framework and i can say it is the best sample i’ve ever seen. Thank you.</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7229">
+				<div id="div-comment-7229" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/2d7f8f92d0b78879f6aff8e7d7dfd498" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">funti</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7229">
+			February 15, 2013 at 1:59 pm</a>		</div>
+
+		<p>once i have comment this line<br>
+redirect(‘home’, ‘refresh’);<br>
+than it works without any error message.<br>
+but after login it will lead to index.php/verifylogin<br>
+is it fine ?<br>
+and what to do to redirect it to another page !</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7233">
+				<div id="div-comment-7233" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/d7491c088aeeb472121c2cd3bb3ac2ee" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://vegaatechnologies.com/" rel="external nofollow" class="url">aruna</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7233">
+			February 16, 2013 at 6:32 am</a>		</div>
+
+		<p>Really good one …. searching for simple sample application to learn codeigniter and found it here</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7246">
+				<div id="div-comment-7246" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/de6e5af348632507e6529f6be72d8549" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Scavanza Laziendo</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7246">
+			February 18, 2013 at 3:07 am</a>		</div>
+
+		<p>what is the action in the tag form in the login_view?? i don’t get it,,because if you hit the submit button nothing will happen,,oh and by the way thanks for the tutorial  i love it</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-7251">
+				<div id="div-comment-7251" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/c3698d6cfc47e4a551bf47cf951f595b" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn"><a href="http://www.jdiadt.com/" rel="external nofollow" class="url">Jack</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7251">
+			February 18, 2013 at 9:58 am</a>		</div>
+
+		<p>Hi, </p>
+<p>Your tutorial was very helpful! However when I attempt to log in I get this error:</p>
+<p>The requested URL /LoginTut/login/VerifyLogin was not found on this server.</p>
+<p>Do you know what might be the problem? </p>
+<p>I posted a question of my problem on StackOverflow. It describes in detail what I did and the problem I am now having.</p>
+<p><a href="http://stackoverflow.com/questions/14940118/simple-login-system-using-codeigniter-returning-404-on-login#comment20967412_14940118" rel="nofollow">http://stackoverflow.com/questions/14940118/simple-login-system-using-codeigniter-returning-404-on-login#comment20967412_14940118</a></p>
+<p>I’d appreciate any help on the topic but once again fantastic tutorial!</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-7270">
+				<div id="div-comment-7270" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/6a56cea617b89b9f4bd5bd1b3af80dea" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Nitish</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7270">
+			February 19, 2013 at 4:25 am</a>		</div>
+
+		<p>Thanks for the tutorial. I am getting the error</p>
+<p>A PHP Error was encountered</p>
+<p>Severity: Notice</p>
+<p>Message: Undefined property: Verifylogin::$form_validation</p>
+<p>Filename: controllers/verifylogin.php</p>
+<p>Line Number: 18</p>
+<p>line number 18 is<br>
+$this-&gt;form_validation-&gt;set_rules(‘username’,'Username’,'trim|required|xss_clean’);</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-7276">
+				<div id="div-comment-7276" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7276">
+			February 19, 2013 at 7:36 am</a>		</div>
+
+		<p>Hi Nitish</p>
+<p>Do you have the line $this-&gt;load-&gt;library(‘form_validation’); before line 18?  You need this line to load the validation library.</p>
+<p>Cheers</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-aarias bypostauthor even thread-even depth-1" id="comment-7277">
+				<div id="div-comment-7277" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt="" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/22652f523a8bf8001d9354950d12fb8f" class="avatar avatar-60 photo" height="60" width="60">		<cite class="fn">Andres Arias</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7277">
+			February 19, 2013 at 7:38 am</a>		</div>
+
+		<p>Hi Scavanza</p>
+<p>The action in the form is added here =&gt; &lt; ?php echo form_open('verifylogin'); ?&gt; (login_view.php, line 9).  This is the same as creating the full tag </p><form &#8230;,="" but="" it="" auto-adds="" the="" site="" url,="" so="" you="" don&#8217;t="" depend="" on="" relative="" paths="" that="" may="" break="" from="" local="" dev="" to="" a="" production="" box.<="" p="">
+<p>Thanks</p>
+
+		<div class="reply">
+				</div>
+				</form></div>
+		</li>
+    </ol>
+    
+    
+
+
+    <h6 id="pings">1 Pings/Trackbacks for "Simple Login with CodeIgniter in PHP"</h6>
+
+    <ol class="commentlist">
+        		<li class="pingback even thread-even depth-1" id="comment-7333">
+				<div id="div-comment-7333" class="comment-body">
+				<div class="comment-author vcard">
+				<cite class="fn"><a href="http://imron02.wordpress.com/2013/06/01/simple-login-using-codeigniter-database/" rel="external nofollow" class="url">Simple Login using CodeIgniter &amp; Database | imron02</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#comment-7333">
+			June 1, 2013 at 9:15 am</a>		</div>
+
+		<p>[...] Very easy if you understand this.  Full Code on Gist <a href="https://gist.github.com/Imron02/5690519" rel="nofollow">https://gist.github.com/Imron02/5690519</a> Source: <a href="http://www.codefactorycr.com/" rel="nofollow">http://www.codefactorycr.com</a> [...]</p>
+
+		<div class="reply">
+				</div>
+				</div>
+		</li>
+    </ol>
+
+
+
+
+    								<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.codefactorycr.com/login-with-codeigniter-php.html#respond" style="display:none;">Cancel reply</a></small></h3>
+									
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">E-mail</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="206" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f5ea4a16d8"></p>					
+							</div><!-- #respond -->
+						
+
+                
+         
+
+        
+	      
+      
+        </div><!-- end of #content -->
+
+        <div id="widgets" class="grid col-300 fit">
+                    
+            		<div id="recent-posts-3" class="widget-wrapper widget_recent_entries">		<div class="widget-title">Latest Blog Entries</div>		<ul>
+					<li>
+				<a href="http://www.codefactorycr.com/test-project-selenium2-testng-maven.html" title="Create a test project with Selenium2, TestNG and Maven">Create a test project with Selenium2, TestNG and Maven</a>
+						</li>
+					<li>
+				<a href="http://www.codefactorycr.com/custom-rules-jquery-validation.html" title="Custom Rules for JQuery Validation in Forms">Custom Rules for JQuery Validation in Forms</a>
+						</li>
+					<li>
+				<a href="./Simple Login with CodeIgniter in PHP - Code Factory_files/Simple Login with CodeIgniter in PHP - Code Factory.htm" title="Simple Login with CodeIgniter in PHP">Simple Login with CodeIgniter in PHP</a>
+						</li>
+					<li>
+				<a href="http://www.codefactorycr.com/glassfish-behind-apache.html" title="Setting up Glassfish behind Apache">Setting up Glassfish behind Apache</a>
+						</li>
+					<li>
+				<a href="http://www.codefactorycr.com/apache-tomcat-and-apr-in-a-linux-server.html" title="Apache Tomcat and APR in a Linux Server">Apache Tomcat and APR in a Linux Server</a>
+						</li>
+				</ul>
+		</div><div id="text-3" class="widget-wrapper widget_text">			<div class="textwidget"><a href="http://www.dreamhost.com/r.cgi?493459" target="_blank">
+<img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/300x250-Sunny2.png">
+</a></div>
+		</div>
+                </div><!-- end of #widgets -->    </div><!-- end of #wrapper -->
+    </div><!-- end of #container -->
+
+<div id="footer" class="clearfix">
+
+    <div id="footer-wrapper">
+    
+        <div class="grid col-940">
+        
+        <div class="grid col-540">
+		         </div><!-- end of col-540 -->
+         
+         <div class="grid col-380 fit">
+         <ul class="social-icons"><li class="twitter-icon"><a href="http://twitter.com/codefactorycr"><img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/twitter-icon.png" width="24" height="24" alt="Twitter"></a></li><li class="facebook-icon"><a href="http://www.facebook.com/pages/Codefactorycr/153581951341581"><img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/facebook-icon.png" width="24" height="24" alt="Facebook"></a></li><li class="linkedin-icon"><a href="http://cr.linkedin.com/in/aarias/"><img src="./Simple Login with CodeIgniter in PHP - Code Factory_files/linkedin-icon.png" width="24" height="24" alt="LinkedIn"></a></li></ul><!-- end of .social-icons -->         </div><!-- end of col-380 fit -->
+         
+         </div><!-- end of col-940 -->
+                             
+        <div class="grid col-300 copyright">
+            © 2013<a href="http://www.codefactorycr.com/" title="Code Factory">
+                Code Factory            </a>
+        </div><!-- end of .copyright -->
+        
+        <div class="grid col-300 scroll-top"><a href="http://www.codefactorycr.com/login-with-codeigniter-php.html#scroll-top" title="scroll to top">↑</a></div>
+        
+        <div class="grid col-300 fit powered">
+            <a href="http://themeid.com/responsive-theme/" title="Responsive Theme">
+                    Responsive Theme</a>
+            powered by <a href="http://wordpress.org/" title="WordPress">
+                    WordPress</a>
+        </div><!-- end .powered -->
+        
+    </div><!-- end #footer-wrapper -->
+    
+</div><!-- end #footer -->
+
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/shCore.js"></script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/shBrushSql.js"></script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/shBrushPhp.js"></script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/shBrushXml.js"></script><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/xd_arbiter.htm" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/xd_arbiter(1).htm" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shCore.css?ver=2.1.364";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shThemeDefault.css?ver=2.1.364";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.clipboardSwf = 'http://www.codefactorycr.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings.expandSource = 'show source';
+	SyntaxHighlighter.config.strings.viewSource = 'view source';
+	SyntaxHighlighter.config.strings.copyToClipboard = 'copy to clipboard';
+	SyntaxHighlighter.config.strings.copyToClipboardConfirmation = 'The code is in your clipboard now';
+	SyntaxHighlighter.config.strings.print = 'print';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/responsive-scripts.js"></script>
+<script type="text/javascript" src="./Simple Login with CodeIgniter in PHP - Code Factory_files/responsive-plugins.js"></script>
+
+</body></html>
